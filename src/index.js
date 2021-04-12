@@ -1,1 +1,10 @@
-console.log("Hello World!");
+import store from './store';
+import { bugAdded, bugResolved } from './actions';
+
+const unsubscribe = store.subscribe(() => {
+    console.log("Store changed!", store.getState());
+})
+
+store.dispatch(bugAdded("Bug 1")); //we add the desired description
+store.dispatch(bugResolved(1));
+unsubscribe();
